@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+<h1>Mark Student Attendance</h1>
+<form method="POST" action="/submit">
+    {% for student in students %}
+        <div>
+            <label>{{ student }}</label>
+            <input type="hidden" name="student_name" value="{{ student }}">
+            <select name="status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+        </div>
+    {% endfor %}
+    <button type="submit">Submit Attendance</button>
+</form>
+
+<a href="/report">View Attendance Report</a>
+{% endblock %}
